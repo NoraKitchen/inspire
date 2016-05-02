@@ -4,21 +4,84 @@
 	<meta charset="UTF-8">
 	<title>Inspire</title>
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 
-<body ng-controller="ImageController as ic">
-	<div ng-controller="WeatherController as wc">
+<body ng-controller="ImageController as ic" style="background: url({{ic.imageData.url}}) no-repeat center center; background-size: 100%;">
 
-	</div>
+	<!--- <div style="background: url({{ic.imageData.url}}) no-repeat center center; background-size: 100%;"> -->
 
-	<div ng-controller="QuoteController as qc">
+	<div class="container-fluid">
 
-	</div>
+		<!--<img ng-src={{ic.imageData.url}}>-->
 
-	<div ng-controller="TodoController as tc">
+		<section class="row">
 
-	</div>
+			<div class="col-md-3 time" ng-controller="DateController as dc">
+				<span class="timehover" ng-click="dc.toggleTime()">{{dc.hours}}: {{dc.minutes}}</span>
+				<div ng-controller="NameController as nc">
+					<h4>Good {{dc.greeting}}, {{nc.savedName}}!</h4>
+					<form class="form form-inline" ng-hide="nc.meatsackTargetIdentified">
+						<input type="text" class="form-control" ng-model="nc.name" placeholder="Please enter your name">
+						<button class="btn btn-primary" ng-click="nc.saveName(nc.name)">Ok</button>
+				</form>
+				</div>
+			</div>
 
+			<div class="col-md-6 text-center back-text" ng-controller="QuoteController as qc">
+				<div ng-mouseover="qc.showAuthor = true" ng-mouseleave="qc.showAuthor = false">
+					{{qc.quote.quote}}
+					<p ng-show="qc.showAuthor">- {{qc.quote.author}}</p>
+				</div>
+			</div>
+
+			<div class="col-md-2 pull-right" ng-controller="WeatherController as wc" ng-click="wc.toggleTemp()">
+				<div class="round">
+					{{wc.weather.name}}<br> {{wc.temp}}&#176;{{wc.degrees}}
+					<br> {{wc.weather.weather[0].main}}
+				</div>
+			</div>
+
+
+		</section>
+
+</div>
+
+		<footer class="navbar navbar-fixed-bottom" ng-controller="TodoController as tc">
+			<div class="container-fluid">
+
+			<div class="col-md-3 pull-right">
+				<div class="panel panel-default do-list-panel">
+					<div class="panel-heading">
+						<div class="do-list-head">
+							<h4>To Do List <span class="pull-right">{{tc.todos.length}} Items</span></h4>
+							<div class="list-scroll">
+							<ul class="list-unstyled">
+								<li ng-repeat="item in tc.todos track by $index">
+									{{item}} <a href="#" ng-click="tc.removeItem($index)">&times;</a>
+								</li>
+							</ul>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<form class="form form-inline">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="tc.newListItem">
+								<button ng-click="tc.addTodos(tc.newListItem)">Add</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+
+		</footer>
+
+
+
+	
 
 
 
@@ -34,6 +97,8 @@
 	<script src="app/components/image/image-controller.js"></script>
 	<script src="app/components/quote/quote-controller.js"></script>
 	<script src="app/components/todo/todo-controller.js"></script>
+	<script src="app/components/date/date-controller.js"></script>
+	<script src="app/components/name/name-controller.js"></script>
 
 </body>
 
