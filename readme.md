@@ -1,53 +1,39 @@
-##Inspire
+#Inspire
 
-Inspiration can be difficult to achieve. Keep track of your many important tasks and the weather with the suttle help of a random daily quote and beatiful scenery.   
+This app was created four weeks into the BoiseCodeWorks Immersive Full Stack program as the second “checkpoint” test completed independently without help from teachers or aids. At this point in the curriculum, students had experience with HTML, CSS, Bootstrap, JavaScript, and Angular “controller as” syntax.
 
-###The Setup
+The app was initially given to students with services set up to obtain weather data, random quotes, and random background images. A basic Angular skeleton was also in place, with empty controllers students could fill with the requested functionality.
 
-This time around you are being thrown into a mix of several files and some basic structure. Take some time to look at the files. You will not be required to edit any of the code in any files that end in `service.js`
+###Tasks
 
-You will notice that the basic controllers and html structure has been setup for you. If you open your developer tools you will see a list of data that is coming to you from each service and is being passed to the appropriate controller. 
+In this app, my job was to...
 
-Your goal will be to put all of this data together in a visually pleasing format as well as ensuring the functionality of the todolist. The `TodoService` already has a helper method for saving your todolist however the entire todolist must be passed to the service for the save to work. 
+1. Render the current weather data, random quote, and random background image to the screen
+2. Toggle between Fahrenheit and Celsius when the weather is clicked
+3. Show the author of the quote on hover
+4. Position at least one other element over the top of the background image
+5. Include a todolist that allows items to be added and removed
+6. The todolist must provide persistent data through the service/localStorage
+7. BONUS: Render a clock to the screen that updates each minute. Allow the clock to toggle to military time. Display Good Morning, Afternoon, or Evening as appropriate. Allow the user to input their name, render it on the page, and save to local storage.
 
-Below you will see an image that you may use for inspiration. 
+##Process highlights, things to do differently
 
-<div class="text-center">
-<img class="img-responsive" src="https://bcw.blob.core.windows.net/public/img/inspire.jpg"/>
-</div>
+This small project had a lot of things going on, but each piece was a relatively small and straight-forward. With the new introduction of Angular and reinforcement to keep each of my bits of functionality separate, I was able to keep my code much better organized than in previous projects. In the end, my main struggle points were with styling issues/CSS/Bootstrap.
 
-###Step 1 -  Where is the output? `Total Points: 5`
+###CSS IS AWESOME
 
-It is your responsibility to render each piece of the data from the services out to the screen. Look carefully at each controller to figure out the properties that will need to be used for visualization.
+By far my most difficult and time-consuming struggle was trying to affix my todolist in the bottom right corner of my screen. I knew how to do this with plain HTML and CSS, but it seemed Bootstrap was interfering with my usual tactics.
 
-Requirements:
-- `5 points`: The data from the services are each rendered. Quote, Image, Weather, Todo 
+In the end I realized if I was going to use Bootstrap, I had to stop thinking in plain CSS terms and play by the rules of my framework. It stood to reason that Bootstrap would have some way to fix a row to the bottom of the screen. Within minutes of changing my thinking from CSS to Bootstrap, I'd figured out the classes/components I needed to get what I wanted.
 
-###Step 2 - Adding the functionality `Total Points: 12.5`
+Though I luckily got everything where I wanted in the end, it's clear I wasn't paying much attention to responsiveness when making this layout. While this page is meant to be viewed on a desktop, it might be a nice exercise to try to make it more mobile-friendly in the future. It might also be good to try to find a styling for the text that makes it more readable on all backgrounds, though the existence of such a thing might be wishful thinking.
 
-The todolist is perhaps on of the most important features of this application. You will need to provide the user a way to add items to a list to be monitored for tracking. The user should be able to add or remove items easily and for a small bonus the user should be able to indicate an items status if they don't want to remove the item.
+###Toggling the weather
 
-Requirements: 
-- `2.5 points`: The todolist allows items to be added to a list
-- `2.5 points`: The todolist allows items to be removed from the list
-- `2.5 points`: The todolist takes advantage of the TodoService to provide persistant data through localStorage 
-- `1.25 points`: The todolist shows the total count of task currently being tracked
-- `1.25 points`: Clicking the weather should let the user toggle between Celsius and Fahrenheit display
+One small thing I noticed on the JavaScript side of things is that I toggled the weather from Celsius to Fahrenheit by saving what state the temperature is currently in as a one-character string, either “F” or “C”. It works, but I find this a little odd now, and might prefer instead to save the information in a boolean, perhaps “displayCelsius”, which could be toggled between true and false.
 
-###Step 3 - Prettify `Total Points: 5`
+###Toggling the time
 
-The positioning of elements on the page is not the absolute most crucial thing for this application however it does need to have few things to make the grade. Use the picture above as an idea for laying out your site.
+At the time I made this, I was probably not aware of the library Moment.js. It looks like I manually changed the time from military to 12 hours with plain JavaScript, but I imagine I could have used Moment.js for this with less reinvention of the wheel and potential for mistake.
 
-Requirements:
-- `2.5 points`: On hover the quote should show the author of the quote
-- `2.5 points`: The image should be on large display with at least one other element positioned over the top of the image.  
-
-###BONUS - Preview the Songs `Total Points: 5`
-Requirements: 
-- A clock should be rendered to the screen that updates each minute without a page refresh
-- Allow the user to set their name and have it save to localStorage
-- Change the message from Good Morning to Good Afternoon, Evening as appropriate. 
-- Allow the user to toggle the clock from, 12hr to military time. 
-
-###Finished?
-When You are finished please slack the url for your github repo to me with in a DM.
+###To see the original instructions for this activity, visit README2.md
