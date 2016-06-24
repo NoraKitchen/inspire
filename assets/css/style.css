@@ -15,6 +15,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .round:hover {
@@ -47,8 +48,13 @@ html {
     font-size: 50px;
     text-shadow: 2px 2px black;
     opacity: 0.7;
+    cursor: hand;
 }
 
 .timehover:hover{
     font-weight: bold;
+}
+
+.info-button {
+  padding-left: 3px;
 }
