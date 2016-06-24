@@ -20,7 +20,7 @@
 			<div class="col-md-3 time" ng-controller="DateController as dc">
 				<span class="timehover" ng-click="dc.toggleTime()">{{dc.hours}}: {{dc.minutes}}</span>
 				<div ng-controller="NameController as nc">
-					<h4>Good {{dc.greeting}}, {{nc.savedName}}!  <a href="https://github.com/NoraKitchen/inspire/blob/master/README.md"><span class="info-button glyphicon glyphicon-info-sign"></span></a></h4>
+					<h4>Good {{dc.greeting}}, {{nc.savedName}}!  <a href="https://github.com/NoraKitchen/inspire/blob/master/readme.md"><span class="info-button glyphicon glyphicon-info-sign"></span></a></h4>
 					<form class="form form-inline" ng-hide="nc.meatsackTargetIdentified">
 						<input type="text" class="form-control" ng-model="nc.name" placeholder="Please enter your name">
 						<button class="btn btn-primary" ng-click="nc.saveName(nc.name)">Ok</button>
